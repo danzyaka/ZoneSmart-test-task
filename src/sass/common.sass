@@ -9,8 +9,13 @@ input[type]
     border: none
     font-family: $mainFont
 
+    @include simpleText
+
+.base-h1
+    font: normal 500 36px/1.1 $mainFont
+
 .base-text
-    font: normal 400 14px 1 $mainFont
+    @include simpleText
 
     &--xs
         font-size: 10px
@@ -18,5 +23,5 @@ input[type]
     &--sm
         font-size: 12px
 
-    &--md
-        font-size: 16px
+.base-label
+    @include simpleText

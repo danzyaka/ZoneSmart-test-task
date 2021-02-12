@@ -4,7 +4,7 @@ export default [
         name: 'Table',
         component: () => (
             import(
-                /* webpackChunkName: "table" */ '@/views/Table.vue'
+                /* webpackChunkName: "table" */ '@/views/Login'
             )
         ),
     },
@@ -12,7 +12,7 @@ export default [
         path: '/login',
         name: 'Login',
         component: () => (
-            import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+            import(/* webpackChunkName: "login" */ '@/views/Login')
         ),
     },
 ];

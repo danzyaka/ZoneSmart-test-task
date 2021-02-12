@@ -9,13 +9,14 @@
     "private": true,
     "scripts": {
         "dev": "webpack",
-        "build": "webpack --mode=production",
+        "build": "webpack --node-env production",
         "serve": "webpack serve --open"
     },
     "dependencies": {
         "axios": "^0.21.1",
         "feather-icons": "^4.28.0",
         "vue": "^2.6.12",
+        "vue-feather": "^1.1.1",
         "vue-router": "^3.5.1",
         "vuex": "^3.6.2"
     },
@@ -43,6 +44,7 @@
         "url-loader": "^4.1.1",
         "vue-loader": "^15.9.6",
         "vue-style-loader": "^4.1.2",
+        "vue-svg-loader": "^0.16.0",
         "vue-template-compiler": "^2.6.12",
         "webpack": "^5.21.2",
         "webpack-cli": "^4.5.0",

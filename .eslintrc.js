@@ -9,22 +9,23 @@ module.exports = {
     },
     extends: [
         'airbnb-base',
-        'plugin:vue/recommended',
-        'plugin:import/errors',
-        'plugin:import/warnings',
+        // 'plugin:vue/recommended',
+        // 'plugin:import/errors',
+        // 'plugin:import/warnings',
     ],
     plugins: ['import'],
     rules: {
         indent: [0, 4],
         semi: 0,
+        'no-return-assign': 2,
+        'import/extensions': [2, 'never'],
     },
     settings: {
-        'import/extensions': ['error', 'never', { ignorePackages: true }],
         'import/resolver': {
             alias: {
                 map: [['@', './src']],
+                extensions: ['.vue', '.js', '.pug', '.sass'],
             },
-            extensions: ['.js', '.vue'],
         },
     },
-};
+}

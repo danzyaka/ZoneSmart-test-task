@@ -3,7 +3,7 @@ RouterView
 </template>
 
 <script>
-import './sass/index.sass'
+import './sass'
 
 export default {
     name: 'App',

@@ -19,7 +19,7 @@ module.exports = {
             filename: 'style.[contenthash:8].css',
         }),
     ],
-    devtool: 'inline-source-map',
+    devtool: process.env.NODE_ENV ? 'suurce-map' : 'inline-source-map',
     devServer: {
         port: 8000,
     },
@@ -36,8 +36,19 @@ module.exports = {
                 exclude: [/node_modules/],
             },
             {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
+            {
                 test: /\.pug$/,
-                loader: 'pug-plain-loader',
+                use: [
+                    {
+                        loader: 'pug-plain-loader',
+                        options: {
+                            basedir: __dirname,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(sass)$/,
@@ -51,7 +62,22 @@ module.exports = {
                             sassOptions: {
                                 indentedSyntax: true,
                             },
-                            additionalData: '@import "@/sass/variables.sass"',
+                            additionalData: '@import "@/sass/global.sass"',
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: ['babel-loader', 'vue-svg-loader'],
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'fonts/[name].[contenthash:8].[ext]',
                         },
                     },
                 ],
@@ -68,25 +94,16 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[path][name].[ext]',
+                            name: 'assets/[name].[contenthash:8].[ext]',
                         },
                     },
                 ],
             },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-            },
         ],
     },
     resolve: {
-        extensions: ['.js', '.vue'],
+        extensions: ['.vue', '.js', '.sass', '.pug'],
         alias: {
-            vue$: 'vue/dist/vue.runtime.esm.js',
             '@': path.resolve(__dirname, 'src/'),
         },
     },
